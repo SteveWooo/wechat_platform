@@ -1,11 +1,9 @@
-
 {
   "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -19,4 +17,3 @@
     "wangeditor": "^3.1.1"
   }
 }
-

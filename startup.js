@@ -1,4 +1,3 @@
-
 async function main(){
 	var swc;
 	try{
@@ -12,4 +11,3 @@ async function main(){
 }
 
 main();
-	

@@ -1,0 +1,16 @@
+
+{
+	"server" : {
+		"port" : 81,
+		"base_res_path" : "res",
+		"public_salt" : "keke_salt",
+		"bussiness_name" : "wechat_platform"
+	},
+	"mysql" : {
+		"host" : "localhost",
+		"user" : "root",
+		"password" : "123456",
+		"database" : "keke",
+		"port" : 3306
+	}
+}
