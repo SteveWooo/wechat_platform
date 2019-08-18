@@ -32,7 +32,9 @@ module.exports = {
 		var query = req.query;
 		var swc = req.swc;
 
-		var code = req.query.code;
+		var result = await getAccessToken(swc, {
+			code : query.code
+		})
 
 		var html = 
 `
