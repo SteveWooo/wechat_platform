@@ -1,7 +1,7 @@
 
 {
 	"server" : {
-		"port" : 81,
+		"port" : 200,
 		"base_res_path" : "res",
 		"public_salt" : "keke_salt",
 		"bussiness_name" : "wechat_platform"

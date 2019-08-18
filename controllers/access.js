@@ -4,5 +4,9 @@ module.exports = async (swc, options)=>{
 		serviceName : 'wechat'
 	})
 
+	swc = await swc.registerHttpService(swc, {
+		httpServiceFilePath : `${__dirname}/../services/http`
+	})
+
 	return swc;
 }
