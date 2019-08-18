@@ -25,7 +25,7 @@ module.exports = {
 			appid : '${swc.config.wechat.appid}',
 			redirectUrl : 'https://www.deadfishcrypto.com/wechat_platform/access/receive_code'
 		}
-		window.localStorage.setItem('callback', ${query.callback});
+		window.localStorage.setItem('callback', '${query.callback}');
 		location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.appid + '&redirect_uri=' + config.redirectUrl
 			 + '&response_type=code&scope=snsapi_base&state=123#wechat_redirect';
 	</script>

@@ -60,9 +60,9 @@ module.exports = {
 		var callbackUrl = window.localStorage.getItem('callback');
 		window.localStorage.setItem('callback', undefined);
 		if(callbackUrl.indexOf('?') > 0){
-			callbackUrl += '&openid=' + ${openid}
+			callbackUrl += '&openid=${openid}';
 		} else {
-			callbackUrl += '?openid=' + ${openid}
+			callbackUrl += '?openid=${openid}';
 		}
 		window.location.href = callbackUrl;
 	</script>
