@@ -39,8 +39,11 @@ module.exports = {
 
 			return undefined;
 		}
-		var code = getQuery('code');
-		alert(code);
+
+		windows.localStorage.set('redirecUrl', ${query.redirec_url});
+
+		location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.appid + '&redirect_uri=' + config.redirectUrl
+			 + '&response_type=code&scope=snsapi_base&state=123#wechat_redirect';
 	</script>
 </body>
 </html>
