@@ -7,6 +7,7 @@ function getAccessToken(swc, options){
 
 		request(option, (err, res, body)=>{
 			if(err || res.statusCode != 200){
+				console.log(err);
 				resolve(undefined);
 				return ;
 			}
