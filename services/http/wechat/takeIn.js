@@ -9,9 +9,9 @@ module.exports = {
 		}
 	},
 	service : async (req, res, next)=>{
-		var query = req.body;
+		var query = req.query;
 		var swc = req.swc;
-
+		console.log(query);
 		res.send(query.echostr);
 	}
 }
