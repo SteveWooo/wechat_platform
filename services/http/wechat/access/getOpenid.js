@@ -26,7 +26,7 @@ module.exports = {
 
 	<script type="text/javascript">
 		var config = {
-			appid : 'wx943d1f278fbc24ff',
+			appid : '${swc.config.wechat.appid}',
 			redirectUrl : 'https://www.deadfishcrypto.com/wechat_platform/access/receive_code'
 		}
 		var getQuery = function(variable){
@@ -40,7 +40,7 @@ module.exports = {
 			return undefined;
 		}
 
-		window.localStorage.setItem('redirecUrl', ${query.redirec_url});
+		window.localStorage.setItem('redirectUrl', ${query.redirect_url});
 
 		location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.appid + '&redirect_uri=' + config.redirectUrl
 			 + '&response_type=code&scope=snsapi_base&state=123#wechat_redirect';

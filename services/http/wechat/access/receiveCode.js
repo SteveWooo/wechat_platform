@@ -1,3 +1,22 @@
+const request = require('request');
+function getAccessToken(swc, options){
+	return new Promise(resolve=>{
+		var option = {
+			url : `https://api.weixin.qq.com/sns/oauth2/access_token?appid=${swc.config.wechat.appid}&secret=${swc.config.wechat.secret}&code=${options.code}&grant_type=authorization_code`
+		};
+
+		request(option, (err, res, body)=>{
+			if(err || res.statusCode != 200){
+				resolve(undefined);
+				return ;
+			}
+
+			console.log(body);
+			resolve(body);
+		})
+	})
+}
+
 module.exports = {
 	config : {
 		path : '/access/receive_code',
@@ -12,6 +31,8 @@ module.exports = {
 		var query = req.query;
 		var swc = req.swc;
 
+		var code = req.query.code;
+
 		var html = 
 `
 <!DOCTYPE html>
@@ -21,12 +42,12 @@ module.exports = {
 </head>
 <body>
 	<h1>
-		hi	
+		hi	receive code
 	</h1>
 
 	<script type="text/javascript">
 		var config = {
-			appid : 'wx943d1f278fbc24ff',
+			appid : '${swc.config.wechat.appid}',
 			redirectUrl : 'https://www.deadfishcrypto.com/wechat_platform/access/receive_code'
 		}
 		var getQuery = function(variable){
