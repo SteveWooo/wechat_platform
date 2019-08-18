@@ -45,5 +45,6 @@ module.exports = {
 </body>
 </html>
 `
+	res.send(html);
 	}
 }
