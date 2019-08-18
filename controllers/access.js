@@ -4,6 +4,13 @@ module.exports = async (swc, options)=>{
 		serviceName : 'wechat'
 	})
 
+	swc = await swc.registerStatic(swc, {
+		items : [{
+			path : `/${swc.config.server.bussiness_name}/testPages`,
+			staticFilePath : `${__dirname}/../public/testPages`
+		}]
+	});
+
 	swc = await swc.registerHttpService(swc, {
 		httpServiceFilePath : `${__dirname}/../services/http`
 	})
