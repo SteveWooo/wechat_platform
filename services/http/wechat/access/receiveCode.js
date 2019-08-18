@@ -7,12 +7,14 @@ function getAccessToken(swc, options){
 
 		request(option, (err, res, body)=>{
 			if(err || res.statusCode != 200){
-				console.log(err);
 				resolve(undefined);
 				return ;
 			}
-
-			console.log(body);
+			body = JSON.parse(body);
+			if(body.openid == undefined){
+				resolve(undefined);
+				return ;
+			}
 			resolve(body);
 		})
 	})
@@ -35,6 +37,12 @@ module.exports = {
 		var result = await getAccessToken(swc, {
 			code : query.code
 		})
+		if(result == undefined){
+			res.send('微信登陆失败，请联系开发者');
+			return ;
+		}
+
+		var openid = result.openid;
 
 		var html = 
 `
@@ -44,27 +52,19 @@ module.exports = {
 	<title></title>
 </head>
 <body>
-	<h1>
-		hi	receive code
-	</h1>
-
 	<script type="text/javascript">
 		var config = {
 			appid : '${swc.config.wechat.appid}',
 			redirectUrl : 'https://www.deadfishcrypto.com/wechat_platform/access/receive_code'
 		}
-		var getQuery = function(variable){
-			var query = window.location.search.substring(1);
-			var vars = query.split("&");
-			for (var i=0;i<vars.length;i++) {
-			       var pair = vars[i].split("=");
-			       if(pair[0] == variable){return pair[1];}
-			}
-
-			return undefined;
+		var callbackUrl = window.localStorage.getItem('callback');
+		window.localStorage.setItem('callback', undefined);
+		if(callbackUrl.indexOf('?') > 0){
+			callbackUrl += '&openid=' + ${openid}
+		} else {
+			callbackUrl += '?openid=' + ${openid}
 		}
-		var code = getQuery('code');
-		alert(code);
+		window.location.href = callbackUrl;
 	</script>
 </body>
 </html>
